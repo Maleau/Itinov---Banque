@@ -2,14 +2,14 @@ header
 {
     background: linear-gradient(to right, #007e93, #45d5c8);
     overflow: hidden;
-    padding: 5px 10px 5px 10px;
+    // padding: 5px 10px 5px 10px;
     display: flex;
 }
 
 img
 {
     height: 100px;
-    margin: -20px 50px -20px 0;
+    margin: -10px 50px -10px 5px;
 }
 
 nav
@@ -22,23 +22,46 @@ nav
 ul
 {
     display: flex;
+    align-items: center;
     list-style: none;
     margin: 0;
     padding: 0;
+    height: 100%;
 }
 
 li
 {
     margin-left: 25px;
-    font-size: 20px;
-    font-weight: bold;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
 
 a
 {
     text-decoration: none;
     color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-bottom: solid transparent 5px;
+    padding: 0 10px 0 10px;
+    
 }
+
+a:hover
+{
+    color: #171c45;
+}
+
+.active
+{
+    color: #171c45;
+    border-bottom: solid #171c45 5px;
+}
+
 
 .blank
 {
@@ -51,4 +74,5 @@ span
     color: #fff;
     display: flex;
     align-items: center;
+    margin-right: 5px;
 }
