@@ -1,0 +1,33 @@
+div
+{
+    border-top: solid 1px rgb(200, 200, 200);
+    display: flex;
+}
+
+div:hover
+{
+    background-color: rgb(240, 240, 245);
+}
+
+p
+{
+   white-space: nowrap;
+   margin: 15px;
+   font-size: 15px;
+   font-weight: 600;
+}
+
+.blank
+{
+    width: 100%;
+}
+
+.green
+{
+    color: #46CB18;
+}
+
+.red
+{
+    color: #E03C31;
+}

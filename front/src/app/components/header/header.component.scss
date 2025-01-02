@@ -2,8 +2,8 @@ header
 {
     background: linear-gradient(to right, #007e93, #45d5c8);
     overflow: hidden;
-    // padding: 5px 10px 5px 10px;
     display: flex;
+    box-shadow: 0px 0px 5px 0px #000;
 }
 
 img
@@ -42,7 +42,7 @@ a
     text-decoration: none;
     color: #fff;
     font-size: 20px;
-    font-weight: bold;
+    font-weight: 600;
     height: 100%;
     display: flex;
     align-items: center;
