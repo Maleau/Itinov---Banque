@@ -2,13 +2,17 @@ import { Operation } from "./operation";
 
 export class Compte
 {
+    id: number;
     name: string;
+    type: "epargne" | "bancaire";
     operations: Operation[];
     total: number;
 
-    constructor(name: string, operations: Operation[])
+    constructor(id:number, name: string, type: "epargne" | "bancaire", operations: Operation[])
     {
+        this.id = id;
         this.name = name;
+        this.type = type;
         this.operations = operations;
         this.total = this.setTotal();
     }

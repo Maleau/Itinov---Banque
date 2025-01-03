@@ -1,0 +1,21 @@
+<button (click)="onClick()">
+    <span class="material-symbols-outlined">arrow_back</span>
+</button>
+
+<div *ngIf="compte !== null; else error">
+    <h1>
+        <span>{{compte.name}}</span>
+        <span class="blank"></span>
+        <span>{{compte.total | currency: 'EUR'}}</span>
+    </h1>
+
+    <p *ngFor="let operation of operationList" class="list">
+        <span class="element">{{operation.date | date: 'dd/MM/yyyy'}}</span>
+        <span class="element blank">{{operation.name}}</span>
+        <span class="green" [ngClass]="{ red: operation.rising < 0 }">{{operation.rising | currency: 'EUR'}}</span>
+    </p>
+</div>
+
+<ng-template #error>
+    <p class="error">Erreur, ce compte n'existe pas</p>
+</ng-template>

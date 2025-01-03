@@ -15,6 +15,7 @@ import { ComptesListComponent } from './components/comptes-list/comptes-list.com
 import { ComptesPageComponent } from './components/comptes-page/comptes-page.component';
 import { RetraitsPageComponent } from './components/retraits-page/retraits-page.component';
 import { VirementsPageComponent } from './components/virements-page/virements-page.component';
+import { SingleCompteComponent } from './components/single-compte/single-compte.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { VirementsPageComponent } from './components/virements-page/virements-pa
     ComptesPageComponent,
     RetraitsPageComponent,
     VirementsPageComponent,
+    SingleCompteComponent
   ],
   imports: [
     BrowserModule,
