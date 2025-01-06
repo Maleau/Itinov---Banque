@@ -1,0 +1,54 @@
+.container
+{
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1
+{
+    margin: 0 0 10px 0;
+    font-size: 20px;
+    font-weight: 600;
+    width: 100%;
+}
+
+app-custom-select
+{
+    width: 100%;
+}
+
+.montant-container
+{
+    margin: 20px 0 20px 0;
+    display: flex;
+    align-items: center;
+}
+
+.arrow_cool_down
+{
+    font-size: 50px;
+    margin-right: 25px;
+}
+
+button
+{
+    color: #fff;
+    font-family: "Montserrat";
+    font-size: 15px;
+    font-weight: 600;
+    background-color: #171c45;
+    border: 0;
+    border-radius: 50px;
+    padding: 15px;
+    margin-top: 15px;
+}
+
+button:hover
+{
+    background-color: #fff;
+    box-shadow: 0 0px 15px 0 #293d5e1a;
+    cursor: pointer;
+    color: #171c45;
+}

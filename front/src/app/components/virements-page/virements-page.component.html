@@ -1,1 +1,32 @@
-<p>virements-page works!</p>
+<div class="container">
+    <h1>Compte à débiter</h1>
+    <app-custom-select
+        [comptesList]="comptesList"
+        [txt]="'Sélectionnez le compte émetteur'"
+        (currentCompte)="setDebitCompte($event)">
+    </app-custom-select>
+
+    <div class="montant-container">
+        <span class="material-symbols-outlined arrow_cool_down">arrow_cool_down</span>
+        <app-custom-form-fields
+            (amountOutput)="setAmount($event)"
+            (referenceOutput)="setReference($event)">
+        </app-custom-form-fields>
+    </div>
+
+    <h1>Compte à créditer</h1>
+    <app-custom-select
+        [comptesList]="comptesList"
+        [txt]="'Sélectionnez le compte bénéficiaire'"
+        (currentCompte)="setCreditCompte($event)"></app-custom-select>
+
+    <button (click)="onValidateVirement()">Valider l'opération</button>
+</div>
+
+<app-custom-alert
+    *ngIf="showAlert"
+    [txt]="alertMsg"
+    [isRedColor]="isError"
+    (closeAlert)="setShowAlert($event)">
+</app-custom-alert>
+

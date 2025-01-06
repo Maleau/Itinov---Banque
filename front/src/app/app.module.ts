@@ -16,6 +16,11 @@ import { ComptesPageComponent } from './components/comptes-page/comptes-page.com
 import { RetraitsPageComponent } from './components/retraits-page/retraits-page.component';
 import { VirementsPageComponent } from './components/virements-page/virements-page.component';
 import { SingleCompteComponent } from './components/single-compte/single-compte.component';
+import { CustomSelectComponent } from "./components/custom-select/custom-select.component";
+import { CustomFormFieldsComponent } from "./components/custom-form-fields/custom-form-fields.component";
+import { FormsModule } from '@angular/forms';
+import { CustomAlertComponent } from './components/custom-alert/custom-alert.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -26,7 +31,10 @@ import { SingleCompteComponent } from './components/single-compte/single-compte.
     ComptesPageComponent,
     RetraitsPageComponent,
     VirementsPageComponent,
-    SingleCompteComponent
+    SingleCompteComponent,
+    CustomSelectComponent,
+    CustomFormFieldsComponent,
+    CustomAlertComponent
   ],
   imports: [
     BrowserModule,
@@ -35,8 +43,10 @@ import { SingleCompteComponent } from './components/single-compte/single-compte.
     RouterLinkActive,
     NgClass,
     CurrencyPipe,
-    NgFor
-  ],
+    NgFor,
+    FormsModule,
+    BrowserAnimationsModule
+],
   providers: [{ provide: LOCALE_ID, useValue: 'fr-FR'}],
   bootstrap: [AppComponent]
 })

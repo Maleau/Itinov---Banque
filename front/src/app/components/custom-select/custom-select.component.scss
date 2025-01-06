@@ -1,0 +1,50 @@
+.custom-select
+{
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0px 15px 0 #293d5e1a;
+    width: 100%;
+}
+
+.custom-option
+{
+    padding: 15px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.keyboard_arrow
+{
+    margin-left: 25px;
+    width: 50px;
+}
+
+.selectable
+{
+    border-top: solid 1px rgb(200, 200, 200);
+}
+
+.selectable:hover
+{
+    background-color: rgb(240, 240, 245);
+}
+
+.blank
+{
+    width: 100%;
+}
+
+.green
+{
+    color: #46CB18;
+}
+
+.red
+{
+    color: #E03C31;
+}

@@ -1,0 +1,17 @@
+<div class="custom-select">
+    <p (click)="onClickShowOptions()" class="custom-option">
+        <span>{{txt}}</span>
+        <span class="blank"></span>
+        <span class="green" [ngClass]="{ red: total < 0 }">{{totalStr | currency: "EUR"}}</span>
+        <span *ngIf="!showOptions"class="material-symbols-outlined keyboard_arrow">keyboard_arrow_down</span>
+        <span *ngIf="showOptions" class="material-symbols-outlined keyboard_arrow">keyboard_arrow_up</span>
+    </p>
+    <div *ngIf="showOptions" @test>
+        <p (click)="onClickCompte(compte)" *ngFor="let compte of comptesList" class="custom-option selectable">
+            <span>{{compte.name}}</span>
+            <span class="blank"></span>
+            <span class="green" [ngClass]="{ red: compte.total < 0 }">{{compte.total | currency: 'EUR'}}</span>
+            <span class="material-symbols-outlined keyboard_arrow"></span>
+        </p>
+    </div>
+</div>

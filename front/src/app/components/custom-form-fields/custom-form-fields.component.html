@@ -1,0 +1,4 @@
+<div class="custom-form-fields">
+    <input type="number" min="1" placeholder="Montant de l'opération" [(ngModel)]="amount" (change)="emitAmount()">
+    <input type="text" placeholder="Référence du paiement" [(ngModel)]="reference" (change)="emitReference()">
+</div>

@@ -70,6 +70,12 @@ export class ComptesService
     ];
 
 
+    getAllComptes(): Compte[]
+    {
+        return this.comptesList;
+    }
+
+
     getComptesBancaires(): Compte[]
     {
         let comptesBancairesList: Compte[] = [];
@@ -116,5 +122,22 @@ export class ComptesService
         }
 
         return compteBancaireToReturn;
+    }
+
+
+    doMoneyTransfer(compte1: Compte, compte2:Compte, amount: number, reference: string)
+    {
+        console.log("zizi");
+        let compteDebit = this.getCompteById(compte1.id);
+        let compteCredit = this.getCompteById(compte2.id);
+
+        if (compteCredit !== null && compteDebit !== null)
+        {
+            compteDebit.operations.push(new Operation(new Date(), reference, -amount))
+            compteDebit.total = compteDebit.total - amount;
+
+            compteCredit.operations.push(new Operation(new Date(), reference, amount))
+            compteCredit.total = compteCredit.total + amount;
+        }
     }
 }
