@@ -61,12 +61,7 @@ export class TransfersPageComponent
     {
         this.showAlert = closeAlert;
 
-        if(this.isError)
-        {
-            location.reload()
-        }
-
-        else
+        if(!this.isError)
         {
             this.router.navigateByUrl("/comptes");
         }
@@ -92,8 +87,9 @@ export class TransfersPageComponent
 
         else
         {
-            this.alertMsg = `le virement de ${this.debitAccount.name} vers ${this.creditAccount.name} à bien été effectué pour un montant de ${this.amount} €`
+            this.alertMsg = `Le virement de ${this.debitAccount.name} vers ${this.creditAccount.name} à bien été effectué pour un montant de ${this.amount} €`
             this.showAlert = true;
+            this.isError = false;
             this.accountsService.doTransfer(this.debitAccount, this.creditAccount, this.amount, this.reference);
         }
     }

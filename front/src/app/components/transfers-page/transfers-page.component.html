@@ -9,6 +9,8 @@
     <div class="amount-container">
         <span class="material-symbols-outlined arrow_cool_down">arrow_cool_down</span>
         <app-custom-form-fields
+            [amountPlaceholder]="'Montant de l\'opération'"
+            [referencePlaceholder]="'Référence du paiement'"
             (amountOutput)="setAmount($event)"
             (referenceOutput)="setReference($event)">
         </app-custom-form-fields>

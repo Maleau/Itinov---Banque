@@ -1,1 +1,27 @@
-<p>retraits-page works!</p>
+<div class="container">
+    <h1>Compte à débiter</h1>
+    <app-custom-select
+        [accountsList]="accountsList"
+        [txt]="'Sélectionnez le compte à débiter'"
+        (currentAccount)="setDebitAccount($event)">
+    </app-custom-select>
+
+    <div class="amount-container">
+        <span class="material-symbols-outlined arrow_cool_down">arrow_cool_down</span>
+        <app-custom-form-fields
+            [amountPlaceholder]="'Montant du retrait'"
+            [referencePlaceholder]="'Référence du retrait'"
+            (amountOutput)="setAmount($event)"
+            (referenceOutput)="setReference($event)">
+        </app-custom-form-fields>
+    </div>
+
+    <button (click)="validateWithdrawal()">Valider l'opération</button>
+</div>
+
+<app-custom-alert
+    *ngIf="showAlert"
+    [txt]="alertMsg"
+    [isRedColor]="isError"
+    (closeAlert)="setShowAlert($event)">
+</app-custom-alert>

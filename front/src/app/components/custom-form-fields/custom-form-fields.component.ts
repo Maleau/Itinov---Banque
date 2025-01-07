@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-custom-form-fields',
@@ -7,6 +7,9 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class CustomFormFieldsComponent
 {
+    @Input() amountPlaceholder!: string;
+    @Input() referencePlaceholder!: string;
+    
     @Output() amountOutput = new EventEmitter<number>();
     @Output() referenceOutput = new EventEmitter<string>();
 

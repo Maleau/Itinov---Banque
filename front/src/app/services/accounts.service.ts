@@ -125,12 +125,24 @@ export class AccountsService
     }
 
 
+    doWithdrawal(account: Account, amount: number, reference: string)
+    {
+        let debitAccount = this.getAccountById(account.id);
+
+        if(debitAccount !== null)
+        {
+            debitAccount.operations.push(new Operation(new Date(), reference, -amount));
+            debitAccount.total = debitAccount.total - amount;
+        }
+    }
+
+
     doTransfer(account1: Account, account2: Account, amount: number, reference: string)
     {
         let debitAccount = this.getAccountById(account1.id);
         let creditAccount = this.getAccountById(account2.id);
 
-        if (creditAccount !== null && debitAccount !== null)
+        if (debitAccount !== null && creditAccount !== null)
         {
             debitAccount.operations.push(new Operation(new Date(), reference, -amount))
             debitAccount.total = debitAccount.total - amount;
