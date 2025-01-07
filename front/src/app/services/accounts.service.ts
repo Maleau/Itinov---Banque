@@ -1,44 +1,44 @@
 import { Injectable } from '@angular/core';
-import { Compte } from '../models/compte';
+import { Account } from '../models/account';
 import { Operation } from '../models/operation';
 
 @Injectable({
 	  providedIn: 'root'
 })
-export class ComptesService
+export class AccountsService
 {
-    private comptesList: Compte[] = [
-        new Compte(
+    private accountsList: Account[] = [
+        new Account(
             1,
             "Compte principal", 
-            "bancaire",
+            "bank",
             [
                 new Operation(new Date(2024, 11, 27), "Salaire", 2500),
                 new Operation(new Date(2024, 12, 1), "Loyer", -1486),
                 new Operation(new Date(2024, 12, 6), "Fnac", -489.50),
             ]
         ),
-        new Compte(
+        new Account(
             2,
             "Compte secondaire",
-            "bancaire",
+            "bank",
             [
                 new Operation(new Date(2024, 11, 28), "Virement interne", 500),
                 new Operation(new Date(2024, 12, 4), "Vacances", -799.99),
             ]),
-        new Compte(
+        new Account(
             3,
             "Compte joint",
-            "bancaire",
+            "bank",
             [
                 new Operation(new Date(2024, 11, 31), "Virement externe", 250),
                 new Operation(new Date(2024, 11, 31), "Virement externe", 250),
                 new Operation(new Date(2024, 12, 2), "Intermarché", -158.92),
             ]),
-            new Compte(
+            new Account(
                 4,
                 "Livret A",
-                "epargne",
+                "savings",
                 [
                     new Operation(new Date(2024, 10, 28), "Virement interne", 6000),
                     new Operation(new Date(2024, 11, 28), "Virement interne", 500),
@@ -46,20 +46,20 @@ export class ComptesService
                     new Operation(new Date(2024, 12, 15), "Virement interne", -1500),
                 ]
             ),
-            new Compte(
+            new Account(
                 5,
                 "LDDS",
-                "epargne",
+                "savings",
                 [
                     new Operation(new Date(2024, 5, 28), "Virement interne", 4000),
                     new Operation(new Date(2024, 6, 28), "Virement interne", 4000),
                     new Operation(new Date(2024, 7, 28), "Virement interne", 4000),
                 ]
             ),
-            new Compte(
+            new Account(
                 6,
                 "Livret Jeune",
-                "epargne",
+                "savings",
                 [
                     new Operation(new Date(2023, 1, 28), "Virement interne", 500),
                     new Operation(new Date(2023, 2, 28), "Virement interne", 500),
@@ -70,74 +70,73 @@ export class ComptesService
     ];
 
 
-    getAllComptes(): Compte[]
+    getAllAccounts(): Account[]
     {
-        return this.comptesList;
+        return this.accountsList;
     }
 
 
-    getComptesBancaires(): Compte[]
+    getBankAccounts(): Account[]
     {
-        let comptesBancairesList: Compte[] = [];
+        let bankAccountsList: Account[] = [];
 
-        for(let compte of this.comptesList)
+        for(let account of this.accountsList)
         {
-            if(compte.type === "bancaire")
+            if(account.type === "bank")
             {
-                comptesBancairesList.push(compte);
+                bankAccountsList.push(account);
             }
         }
 
-        return comptesBancairesList;
+        return bankAccountsList;
     }
 
     
-    getComptesEpargne(): Compte[]
+    getSavingsAccounts(): Account[]
     {
-        let comptesEpargneList: Compte[] = [];
+        let savingsAccountsList: Account[] = [];
 
-        for(let compte of this.comptesList)
+        for(let account of this.accountsList)
         {
-            if(compte.type === "epargne")
+            if(account.type === "savings")
             {
-                comptesEpargneList.push(compte);
+                savingsAccountsList.push(account);
             }
         }
 
-        return comptesEpargneList;
+        return savingsAccountsList;
     }
 
     
-    getCompteById(compteBancaireId: number): Compte | null
+    getAccountById(accountId: number): Account | null
     {
-        let compteBancaireToReturn: Compte | null = null;
+        let accountToReturn: Account | null = null;
 
-        for(let compteBancaire of this.comptesList)
+        for(let account of this.accountsList)
         {
-            if(compteBancaire.id === compteBancaireId)
+            if(account.id === accountId)
             {
-                compteBancaireToReturn = compteBancaire;
+                accountToReturn = account;
                 break;
             }
         }
 
-        return compteBancaireToReturn;
+        return accountToReturn;
     }
 
 
-    doMoneyTransfer(compte1: Compte, compte2:Compte, amount: number, reference: string)
+    doTransfer(account1: Account, account2: Account, amount: number, reference: string)
     {
-        console.log("zizi");
-        let compteDebit = this.getCompteById(compte1.id);
-        let compteCredit = this.getCompteById(compte2.id);
+        let debitAccount = this.getAccountById(account1.id);
+        let creditAccount = this.getAccountById(account2.id);
 
-        if (compteCredit !== null && compteDebit !== null)
+        if (creditAccount !== null && debitAccount !== null)
         {
-            compteDebit.operations.push(new Operation(new Date(), reference, -amount))
-            compteDebit.total = compteDebit.total - amount;
+            debitAccount.operations.push(new Operation(new Date(), reference, -amount))
+            debitAccount.total = debitAccount.total - amount;
 
-            compteCredit.operations.push(new Operation(new Date(), reference, amount))
-            compteCredit.total = compteCredit.total + amount;
+            creditAccount.operations.push(new Operation(new Date(), reference, amount))
+            creditAccount.total = creditAccount.total + amount;
         }
     }
 }

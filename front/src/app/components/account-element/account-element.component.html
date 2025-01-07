@@ -1,0 +1,5 @@
+<div (click)="onClickAccount()">
+    <p>{{account.name}}</p>
+    <p class="blank"></p>
+    <p class="green" [ngClass]="{ red: account.total < 0 }">{{account.total | currency:'EUR'}}</p>
+</div>

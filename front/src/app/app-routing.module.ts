@@ -1,15 +1,15 @@
 import { RouterModule, Routes } from '@angular/router';
-import { ComptesPageComponent } from './components/comptes-page/comptes-page.component';
-import { RetraitsPageComponent } from './components/retraits-page/retraits-page.component';
-import { VirementsPageComponent } from './components/virements-page/virements-page.component';
+import { AccountsPageComponent } from './components/accounts-page/accounts-page.component';
+import { WithdrawalsPageComponent } from './components/withdrawals-page/withdrawals-page.component';
+import { TransfersPageComponent } from './components/transfers-page/transfers-page.component';
 import { NgModule } from '@angular/core';
-import { SingleCompteComponent } from './components/single-compte/single-compte.component';
+import { SingleAccountPageComponent } from './components/single-account-page/single-account-page.component';
 
 export const routes: Routes = [
-    {path: "comptes", component: ComptesPageComponent},
-    {path: "comptes/:id", component: SingleCompteComponent},
-    {path: "retraits", component: RetraitsPageComponent},
-    {path: "virements", component: VirementsPageComponent},
+    {path: "comptes", component: AccountsPageComponent},
+    {path: "comptes/:id", component: SingleAccountPageComponent},
+    {path: "retraits", component: WithdrawalsPageComponent},
+    {path: "virements", component: TransfersPageComponent},
     {path: "**", redirectTo: "comptes"}
 ];
 

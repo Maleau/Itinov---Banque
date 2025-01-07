@@ -10,12 +10,12 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CurrencyPipe, NgClass, NgFor } from '@angular/common';
-import { CompteElementComponent } from './components/compte-element/compte-element.component';
-import { ComptesListComponent } from './components/comptes-list/comptes-list.component';
-import { ComptesPageComponent } from './components/comptes-page/comptes-page.component';
-import { RetraitsPageComponent } from './components/retraits-page/retraits-page.component';
-import { VirementsPageComponent } from './components/virements-page/virements-page.component';
-import { SingleCompteComponent } from './components/single-compte/single-compte.component';
+import { AccountElementComponent } from './components/account-element/account-element.component';
+import { AccountsListComponent } from './components/accounts-list/accounts-list.component';
+import { AccountsPageComponent } from './components/accounts-page/accounts-page.component';
+import { WithdrawalsPageComponent } from './components/withdrawals-page/withdrawals-page.component';
+import { TransfersPageComponent } from './components/transfers-page/transfers-page.component';
+import { SingleAccountPageComponent } from './components/single-account-page/single-account-page.component';
 import { CustomSelectComponent } from "./components/custom-select/custom-select.component";
 import { CustomFormFieldsComponent } from "./components/custom-form-fields/custom-form-fields.component";
 import { FormsModule } from '@angular/forms';
@@ -26,12 +26,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   declarations: [
     AppComponent,
     HeaderComponent,
-    CompteElementComponent,
-    ComptesListComponent,
-    ComptesPageComponent,
-    RetraitsPageComponent,
-    VirementsPageComponent,
-    SingleCompteComponent,
+    AccountElementComponent,
+    AccountsListComponent,
+    AccountsPageComponent,
+    WithdrawalsPageComponent,
+    TransfersPageComponent,
+    SingleAccountPageComponent,
     CustomSelectComponent,
     CustomFormFieldsComponent,
     CustomAlertComponent

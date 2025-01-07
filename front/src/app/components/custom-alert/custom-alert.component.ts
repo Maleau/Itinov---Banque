@@ -13,9 +13,6 @@ export class CustomAlertComponent
 
     @Output() closeAlert = new EventEmitter<boolean>();
 
-
-    constructor(private router: Router) { }
-
     onCloseAlert()
     {
         this.closeAlert.emit(false);

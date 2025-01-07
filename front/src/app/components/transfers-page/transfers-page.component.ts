@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
-import { Compte } from '../../models/compte';
-import { ComptesService } from '../../services/comptes.service';
+import { Account } from '../../models/account';
+import { AccountsService } from '../../services/accounts.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-virements-page',
-  templateUrl: './virements-page.component.html',
-  styleUrl: './virements-page.component.scss'
+  selector: 'app-transfers-page',
+  templateUrl: './transfers-page.component.html',
+  styleUrl: './transfers-page.component.scss'
 })
-export class VirementsPageComponent
+export class TransfersPageComponent
 {
-    comptesList!: Compte[];
-    debitCompte!: Compte;
-    creditCompte!: Compte;
+    accountsList!: Account[];
+    debitAccount!: Account;
+    creditAccount!: Account;
     amount!:number;
     reference!: string;
 
@@ -22,20 +22,20 @@ export class VirementsPageComponent
 
 
     constructor(
-        private comptesService: ComptesService,
+        private accountsService: AccountsService,
         private router: Router
     ) { }
 
 
     ngOnInit()
     {
-        this.comptesList = this.comptesService.getAllComptes();
+        this.accountsList = this.accountsService.getAllAccounts();
     }
 
 
-    setDebitCompte(debitCompte: Compte)
+    setDebitAccount(debitAccount: Account)
     {
-        this.debitCompte = debitCompte;
+        this.debitAccount = debitAccount;
     }
 
 
@@ -51,9 +51,9 @@ export class VirementsPageComponent
     }
 
 
-    setCreditCompte(creditCompte: Compte)
+    setCreditAccount(creditAccount: Account)
     {
-        this.creditCompte = creditCompte;
+        this.creditAccount = creditAccount;
     }
 
 
@@ -74,9 +74,9 @@ export class VirementsPageComponent
 
 
 
-    onValidateVirement()
+    validateTransfer()
     {
-        if (this.debitCompte === undefined || this.amount === undefined || this.reference === undefined || this.creditCompte === undefined)
+        if (this.debitAccount === undefined || this.amount === undefined || this.reference === undefined || this.creditAccount === undefined)
         {
             this.alertMsg = "Le virement n'a pas pu être effectué, les informations fournies sont incomplètes"
             this.isError = true;
@@ -92,9 +92,9 @@ export class VirementsPageComponent
 
         else
         {
-            this.alertMsg = `le virement de ${this.debitCompte.name} vers ${this.creditCompte.name} à bien été effectué pour un montant de ${this.amount} €`
+            this.alertMsg = `le virement de ${this.debitAccount.name} vers ${this.creditAccount.name} à bien été effectué pour un montant de ${this.amount} €`
             this.showAlert = true;
-            this.comptesService.doMoneyTransfer(this.debitCompte, this.creditCompte, this.amount, this.reference);
+            this.accountsService.doTransfer(this.debitAccount, this.creditAccount, this.amount, this.reference);
         }
     }
 }

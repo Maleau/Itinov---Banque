@@ -1,18 +1,18 @@
-<button (click)="onClick()">
+<button (click)="onRetun()">
     <span class="material-symbols-outlined">arrow_back</span>
 </button>
 
-<div *ngIf="compte !== null; else error">
+<div *ngIf="account !== null; else error">
     <h1>
-        <span>{{compte.name}}</span>
+        <span>{{account.name}}</span>
         <span class="blank"></span>
-        <span>{{compte.total | currency: 'EUR'}}</span>
+        <span>{{account.total | currency: 'EUR'}}</span>
     </h1>
 
-    <p *ngFor="let operation of operationList" class="list">
+    <p *ngFor="let operation of operationsList" class="list">
         <span class="element">{{operation.date | date: 'dd/MM/yyyy'}}</span>
         <span class="element blank">{{operation.name}}</span>
-        <span class="green" [ngClass]="{ red: operation.rising < 0 }">{{operation.rising | currency: 'EUR'}}</span>
+        <span class="green" [ngClass]="{ red: operation.amount < 0 }">{{operation.amount | currency: 'EUR'}}</span>
     </p>
 </div>
 
