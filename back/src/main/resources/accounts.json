@@ -1,0 +1,145 @@
+[
+  {
+    "id": 1,
+    "name": "Compte principal",
+    "type": "bank",
+    "operations": [
+      {
+        "date": "Nov 27, 2024, 12:00:00 AM",
+        "name": "Salaire",
+        "amount": 2500.0
+      },
+      {
+        "date": "Dec 1, 2024, 12:00:00 AM",
+        "name": "Loyer",
+        "amount": -1486.0
+      },
+      {
+        "date": "Dec 6, 2024, 12:00:00 AM",
+        "name": "Fnac",
+        "amount": -489.5
+      }
+    ],
+    "total": 524.5
+  },
+  {
+    "id": 2,
+    "name": "Compte secondaire",
+    "type": "bank",
+    "operations": [
+      {
+        "date": "Nov 28, 2024, 12:00:00 AM",
+        "name": "Virement interne",
+        "amount": 500.0
+      },
+      {
+        "date": "Dec 4, 2024, 12:00:00 AM",
+        "name": "Vacances",
+        "amount": -799.99
+      }
+    ],
+    "total": -299.99
+  },
+  {
+    "id": 3,
+    "name": "Compte joint",
+    "type": "bank",
+    "operations": [
+      {
+        "date": "Nov 30, 2024, 12:00:00 AM",
+        "name": "Virement externe",
+        "amount": 250.0
+      },
+      {
+        "date": "Nov 30, 2024, 12:00:00 AM",
+        "name": "Virement externe",
+        "amount": 250.0
+      },
+      {
+        "date": "Dec 2, 2024, 12:00:00 AM",
+        "name": "Intermarché",
+        "amount": -158.92
+      }
+    ],
+    "total": 341.08
+  },
+  {
+    "id": 4,
+    "name": "Livret A",
+    "type": "savings",
+    "operations": [
+      {
+        "date": "Oct 28, 2024, 12:00:00 AM",
+        "name": "Virement interne",
+        "amount": 6000.0
+      },
+      {
+        "date": "Nov 28, 2024, 12:00:00 AM",
+        "name": "Virement interne",
+        "amount": 500.0
+      },
+      {
+        "date": "Dec 28, 2024, 12:00:00 AM",
+        "name": "Virement interne",
+        "amount": 500.0
+      },
+      {
+        "date": "Dec 15, 2024, 12:00:00 AM",
+        "name": "Virement interne",
+        "amount": -1500.0
+      }
+    ],
+    "total": 5500.0
+  },
+  {
+    "id": 5,
+    "name": "LDDS",
+    "type": "savings",
+    "operations": [
+      {
+        "date": "May 28, 2024, 12:00:00 AM",
+        "name": "Virement interne",
+        "amount": 4000.0
+      },
+      {
+        "date": "Jun 28, 2024, 12:00:00 AM",
+        "name": "Virement interne",
+        "amount": 4000.0
+      },
+      {
+        "date": "Jul 28, 2024, 12:00:00 AM",
+        "name": "Virement interne",
+        "amount": 4000.0
+      }
+    ],
+    "total": 1200.0
+  },
+  {
+    "id": 6,
+    "name": "Livret Jeune",
+    "type": "savings",
+    "operations": [
+      {
+        "date": "Jan 28, 2023, 12:00:00 AM",
+        "name": "Virement interne",
+        "amount": 500.0
+      },
+      {
+        "date": "Feb 28, 2023, 12:00:00 AM",
+        "name": "Virement interne",
+        "amount": 500.0
+      },
+      {
+        "date": "Mar 28, 2023, 12:00:00 AM",
+        "name": "Virement interne",
+        "amount": 600.0
+      },
+      {
+        "date": "Dec 31, 2023, 12:00:00 AM",
+        "name": "Intérêts 2023",
+        "amount": 74.45
+      }
+    ],
+    "total": 1674.45
+  }
+]
