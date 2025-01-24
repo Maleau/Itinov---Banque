@@ -103,7 +103,7 @@ public class AccountsRepository {
                 accountToUpdate.setName(account.getName());
             }
 
-            if (account.getType() != null) {
+            if (account.getType() != null && (account.getType().equals("bank") || account.getType().equals("savings"))) {
                 accountToUpdate.setType(account.getType());
             }
 
@@ -125,5 +125,7 @@ public class AccountsRepository {
                 break;
             }
         }
+
+        writeJsonFile(this.accounts, this.path);
     }
 }
