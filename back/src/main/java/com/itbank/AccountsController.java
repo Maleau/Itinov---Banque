@@ -2,6 +2,7 @@ package com.itbank;
 
 import com.itbank.models.Account;
 import com.itbank.models.Operation;
+import com.itbank.models.Transfer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -85,6 +86,25 @@ public class AccountsController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "a withdrawal cannot exceed the overdraft threshold");
         } else {
             return new ResponseEntity<>(service.doWithdrawal(account, operation), HttpStatus.OK);
+        }
+    }
+
+    @PutMapping("/transfer")
+    public ResponseEntity<List<Account>> doTransfer(@RequestBody Transfer transfer) {
+        Account debitAccount = service.getAccountById(transfer.getDebitAccountId());
+        Account creditAccount = service.getAccountById(transfer.getCreditAccountId());
+        Operation operation = transfer.getOperation();
+
+        if (debitAccount == null || creditAccount == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "There is no account with specified id ");
+        } else if (operation == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Transfer's operation shouldn't be null ");
+        } else if (operation.getAmount() <= 0) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The transfer's amount must be positive");
+        } else if ((debitAccount.getTotal() - operation.getAmount()) < 0) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "a transfer cannot exceed the overdraft threshold of the debit account");
+        } else {
+            return new ResponseEntity<>(service.doTransfer(debitAccount, creditAccount, operation), HttpStatus.OK);
         }
     }
 

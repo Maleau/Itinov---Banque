@@ -83,6 +83,26 @@ public class AccountsService {
         return repository.update(account);
     }
 
+    public List<Account> doTransfer(Account debitAccount, Account creditAccount, Operation operation) {
+        if (operation.getName() == null || operation.getName().isBlank()) {
+            operation.setName("Virement de " + debitAccount.getName() + " vers " + creditAccount.getName());
+        }
+
+        try {
+            Operation debitOperation = (Operation) operation.clone();
+            Operation creditOperation = (Operation) operation.clone();
+
+            List<Account> result = new ArrayList<>();
+            result.add(doWithdrawal(debitAccount, debitOperation));
+            result.add(doDeposit(creditAccount, creditOperation));
+
+            return result;
+
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public void deleteAccountById(int id) {
         repository.deleteById(id);
     }
