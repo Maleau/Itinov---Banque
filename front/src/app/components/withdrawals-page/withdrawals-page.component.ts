@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Account } from '../../models/account';
 import { AccountsService } from '../../services/accounts.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-withdrawals-page',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class WithdrawalsPageComponent
 {
-    accountsList!: Account[];
+    accountsList!: Observable<Account[]>;
     debitAccount!: Account;
     amount!: number;
     reference!: string;
@@ -66,10 +67,18 @@ export class WithdrawalsPageComponent
 
         else
         {
-            this.alertMsg = `Le retrait de ${this.amount} € depuis ${this.debitAccount.name} à bien été effectué.`
-            this.isError = false;
-            this.showAlert = true;
-            this.accountsService.doWithdrawal(this.debitAccount, this.amount, this.reference);
+            this.accountsService.doWithdrawal(this.debitAccount, this.amount, this.reference).subscribe(
+                data => {
+                    this.alertMsg = `Le retrait de ${this.amount} € depuis ${this.debitAccount.name} à bien été effectué.`
+                    this.isError = false;
+                    this.showAlert = true;
+                },
+                error => {
+                    this.alertMsg = "Le retrait n'a pas pu être effectué, le montant de l'opération dépasse le solde du compte"
+                    this.isError = true;
+                    this.showAlert = true;
+                }
+            );
         }
     }
 

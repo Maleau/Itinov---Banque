@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Account } from '../../models/account';
 import { AccountsService } from '../../services/accounts.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-transfers-page',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class TransfersPageComponent
 {
-    accountsList!: Account[];
+    accountsList!: Observable<Account[]>;
     debitAccount!: Account;
     creditAccount!: Account;
     amount!:number;
@@ -87,10 +88,18 @@ export class TransfersPageComponent
 
         else
         {
-            this.alertMsg = `Le virement de ${this.debitAccount.name} vers ${this.creditAccount.name} à bien été effectué pour un montant de ${this.amount} €`
-            this.showAlert = true;
-            this.isError = false;
-            this.accountsService.doTransfer(this.debitAccount, this.creditAccount, this.amount, this.reference);
+            this.accountsService.doTransfer(this.debitAccount, this.creditAccount, this.amount, this.reference).subscribe(
+                data =>  {
+                    this.alertMsg = `Le virement de ${this.debitAccount.name} vers ${this.creditAccount.name} à bien été effectué pour un montant de ${this.amount} €`
+                    this.showAlert = true;
+                    this.isError = false;
+                },
+                error =>{
+                    this.alertMsg = "Le virement n'a pas pu être effectué, le montant de l'opération dépasse le solde du compte débiteur"
+                    this.isError = true;
+                    this.showAlert = true;
+                }
+            );
         }
     }
 }

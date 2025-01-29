@@ -21,6 +21,7 @@ import { CustomFormFieldsComponent } from "./components/custom-form-fields/custo
 import { FormsModule } from '@angular/forms';
 import { CustomAlertComponent } from './components/custom-alert/custom-alert.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CurrencyPipe,
     NgFor,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
 ],
   providers: [{ provide: LOCALE_ID, useValue: 'fr-FR'}],
   bootstrap: [AppComponent]

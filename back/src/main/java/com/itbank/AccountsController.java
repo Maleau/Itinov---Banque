@@ -12,11 +12,13 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/accounts")
 public class AccountsController {
     @Autowired
     AccountsService service;
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping
     public ResponseEntity<List<Account>> getAllAccounts() {
         return new ResponseEntity<>(service.getAllAccounts(), HttpStatus.OK);
