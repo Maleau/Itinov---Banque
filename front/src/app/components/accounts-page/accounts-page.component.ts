@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AccountsListComponent } from "../accounts-list/accounts-list.component";
 import { AccountsService } from '../../services/accounts.service';
 import { Account } from '../../models/account';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-accounts-page',
@@ -10,8 +11,8 @@ import { Account } from '../../models/account';
 })
 export class AccountsPageComponent
 {
-    bankAccountsList!: Account[];
-    savingsAccountsList!: Account[];
+    bankAccountsList!: Observable<Account[]>;
+    savingsAccountsList!: Observable<Account[]>;
 
     constructor(private accountsService: AccountsService) { }
 

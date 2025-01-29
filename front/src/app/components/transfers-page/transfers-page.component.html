@@ -1,7 +1,7 @@
 <div class="container">
     <h1>Compte à débiter</h1>
     <app-custom-select
-        [accountsList]="accountsList"
+        [accountsList]="accountsList | async"
         [txt]="'Sélectionnez le compte émetteur'"
         (currentAccount)="setDebitAccount($event)">
     </app-custom-select>
@@ -18,7 +18,7 @@
 
     <h1>Compte à créditer</h1>
     <app-custom-select
-        [accountsList]="accountsList"
+        [accountsList]="accountsList | async"
         [txt]="'Sélectionnez le compte bénéficiaire'"
         (currentAccount)="setCreditAccount($event)"></app-custom-select>
 

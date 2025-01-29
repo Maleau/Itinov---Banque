@@ -32,7 +32,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
 })
 export class CustomSelectComponent
 {
-    @Input() accountsList!: Account[];
+    @Input() accountsList!: Account[] | null;
     @Input() txt!: string;
 
     @Output() currentAccount = new EventEmitter<Account>();

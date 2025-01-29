@@ -1,4 +1,4 @@
-<app-accounts-list [title]="'Comptes bancaires'" [accountsList]="bankAccountsList"></app-accounts-list>
+<app-accounts-list [title]="'Comptes bancaires'" [accountsList]="bankAccountsList | async"></app-accounts-list>
 
-<app-accounts-list [title]="'Épargne'" [accountsList]="savingsAccountsList"></app-accounts-list>
+<app-accounts-list [title]="'Épargne'" [accountsList]="savingsAccountsList | async"></app-accounts-list>
 

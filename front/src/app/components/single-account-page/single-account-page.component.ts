@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Account } from '../../models/account';
 import { AccountsService } from '../../services/accounts.service';
 import { Operation } from '../../models/operation';
+import { map, Observable, pipe, tap } from 'rxjs';
 
 @Component({
   selector: 'app-single-account-page',
@@ -11,7 +12,8 @@ import { Operation } from '../../models/operation';
 })
 export class SingleAccountPageComponent
 {
-    account!: Account | null;
+    accountObservable!: Observable<Account> | null;
+    account: Account | null = null;
     operationsList!: Operation[];
 
     constructor(
@@ -24,13 +26,17 @@ export class SingleAccountPageComponent
     ngOnInit()
     {
         let accountId: number = +this.route.snapshot.params["id"];
-        this.account = this.accountsService.getAccountById(accountId);
+        this.accountObservable = this.accountsService.getAccountById(accountId);
 
-        if(this.account !== null)
-        {
-            this.operationsList = this.account.operations;
-            this.operationsList.sort((account1, account2) => (account1.date < account2.date ? 1 : -1));
-        }
+        this.accountObservable?.subscribe(account => {
+            this.account = account
+        
+            if(this.account !== null)
+            {
+                this.operationsList = this.account.operations;
+                this.operationsList.sort((account1, account2) => (account1.date < account2.date ? 1 : -1));
+            }
+        });
     }
 
 

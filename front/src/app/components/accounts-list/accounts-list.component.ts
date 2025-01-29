@@ -10,5 +10,5 @@ import { Account } from '../../models/account';
 export class AccountsListComponent
 {
     @Input() title!: string;
-    @Input() accountsList!: Account[];
+    @Input() accountsList!: Account[] | null;
 }
